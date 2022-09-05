@@ -1,26 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEthers } from '@usedapp/core';
+import { Button } from './components/Button';
 
-function App() {
+export const App = () => {
+  const { activateBrowserWallet, account } = useEthers();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <Button onClick={() => activateBrowserWallet()}>Connect</Button>
+      </div>
+      {account && <p>Account: {account}</p>}
     </div>
-  );
+  )
 }
-
-export default App;
